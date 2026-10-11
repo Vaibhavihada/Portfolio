@@ -1,11 +1,56 @@
-   <!DOCTYPE html>
-   <html>
-   <head>
-     <title>My Portfolio</title>
-     <link rel="stylesheet" href="style.css">
-   </head>
-   <body>
-     <h1>Hello, I'm YOUR NAME</h1>
-     <p>I am a designer. This is my portfolio.</p>
-   </body>
-   </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vaibhavi Hada | Information and UX Designer</title>
+  <meta name="description" content="Portfolio of Vaibhavi Hada, an Information and UX Designer.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="nav">
+    <a class="nav__logo" href="#" aria-label="Home">
+      <img src="images/logo.png" alt="">
+    </a>
+    <nav class="nav__links" aria-label="Main">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#blogs">Blogs</a>
+      <a href="https://drive.google.com/drive/folders/1mOdA6eSMr355w70u1BE5AMKsDJHPpAXM" target="_blank" rel="noopener">Resume</a>
+      <a href="https://www.linkedin.com/in/vaibhavihada/" target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="about">
+      <div class="hero__text">
+        <h1>Hi, I’m Vaibhavi Hada</h1>
+        <p class="hero__bio">
+          <span class="hero__role"><span class="regular">An</span> Information and UX Designer,
+            <img class="hero__underline" src="images/underline.svg" alt="">
+          </span>
+          <span class="regular hero__rest">who enjoys turning complex systems into clear, meaningful, and visually engaging experiences and research everything that makes me curious.</span>
+        </p>
+      </div>
+
+      <div class="hero__avatar">
+        <img class="hero__ring" src="images/avatar-ring.svg" alt="">
+        <img class="hero__portrait" src="images/portrait.png" alt="Portrait of Vaibhavi Hada">
+      </div>
+    </section>
+
+    <p class="tagline" id="work">
+      Here are a few of my recent projects that reflect where my practice is headed today
+    </p>
+
+    <a class="scroll-arrow" href="#work" aria-label="Scroll to projects">
+      <img src="images/arrow.svg" alt="">
+    </a>
+  </main>
+
+</body>
+</html>
