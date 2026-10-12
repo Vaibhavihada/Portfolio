@@ -86,10 +86,11 @@ a { color: inherit; text-decoration: none; }
 }
 .hero__underline {
   position: absolute;
-  left: 34px;
-  bottom: -3px;
-  width: 290px;
-  height: 3px;
+  left: 33px;
+  bottom: -6px;
+  width: 293px;
+  height: 6px;
+  max-width: none;
 }
 
 .hero__avatar {
