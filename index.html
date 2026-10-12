@@ -19,56 +19,194 @@
     </a>
     <nav class="nav__links" aria-label="Main">
       <a href="#work" data-nav="work">Work</a>
-      <a href="#about">About</a>
-      <a href="#blogs">Blogs</a>
+      <a href="#about" data-nav="about">About</a>
+      <a href="#blogs" data-nav="blogs">Blogs</a>
       <a href="https://drive.google.com/drive/folders/1mOdA6eSMr355w70u1BE5AMKsDJHPpAXM" target="_blank" rel="noopener">Resume</a>
       <a href="https://www.linkedin.com/in/vaibhavihada/" target="_blank" rel="noopener">LinkedIn</a>
     </nav>
   </header>
 
-  <main id="top">
-    <section class="hero" id="about">
+  <main>
+  <!-- ===================== HOME (Hero, Work, About, Blogs) ===================== -->
+  <div id="home">
+
+    <section class="hero" id="top">
       <div class="hero__text">
-        <h1>Hi, I’m Vaibhavi Hada</h1>
+        <!-- TODO: replace the text below with your original hero copy -->
+        <h1>Hi, I&rsquo;m Vaibhavi Hada</h1>
         <p class="hero__bio">
-          <span class="hero__role"><span class="regular">An</span> Information and UX Designer,
-            <img class="hero__underline" src="images/underline.svg" alt="">
-          </span>
-          <span class="regular hero__rest">who enjoys turning complex systems into clear, meaningful, and visually engaging experiences and research everything that makes me curious.</span>
+          <span class="hero__role">Information and UX Designer<img class="hero__underline" src="images/underline.svg" alt=""></span>
+          <span class="regular">Master&rsquo;s student in Information Design and Data Visualisation at MIT Institute of Design, designing clear, human-centred digital experiences.</span>
         </p>
       </div>
-
-      <div class="hero__avatar">
-        <img src="images/portrait.png" width="240" height="240" alt="Portrait of Vaibhavi Hada">
-      </div>
+      <div class="hero__avatar"><img src="images/avatar.png" alt="Portrait of Vaibhavi Hada"></div>
     </section>
 
-    <p class="tagline">
-      Here are a few of my recent projects that reflect where my practice is headed today
-    </p>
+    <p class="tagline"><!-- TODO: your tagline -->Curious by nature, I turn complex information into simple, thoughtful experiences.</p>
 
-    <a class="scroll-arrow" href="#work" aria-label="Scroll to my work">
-      <img src="images/arrow.svg" alt="">
-    </a>
+    <a class="scroll-arrow" href="#work" aria-label="Scroll to my work"><img src="images/arrow.png" alt=""></a>
 
+    <!-- WORK -->
     <section class="work" id="work" aria-label="Work">
-      <div class="work__grid">
-        <a class="card" href="#" style="--i:0">
-          <span class="card__frame"><img src="images/work-1.png" alt="Sense Shift: an empathy kit to understand older adults"></span>
+      <div class="slider" data-slider>
+        <div class="slider__track" tabindex="0">
+        <a class="card" href="#/sense-shift" style="--i:0" aria-label="Sense Shift: An Empathy Kit">
+          <span class="card__frame"><img src="images/work-1.png" alt="Sense Shift: An Empathy Kit"></span>
         </a>
-        <a class="card" href="#" style="--i:1">
-          <span class="card__frame"><img src="images/work-2.png" alt="Summer internship at the Media Tech Lab, IIT Delhi"></span>
+        <a class="card" href="#/iitd" style="--i:1" aria-label="IIT-D Internship: Media Tech Lab">
+          <span class="card__frame"><img src="images/work-2.png" alt="IIT-D Internship: Media Tech Lab"></span>
         </a>
-        <a class="card" href="#" style="--i:2">
-          <span class="card__frame"><img src="images/work-3.png" alt="Website landing page re-design for NMA"></span>
+        <a class="card" href="#/nma" style="--i:2" aria-label="Re-design NMA Web Landing page">
+          <span class="card__frame"><img src="images/work-3.png" alt="Re-design NMA Web Landing page"></span>
         </a>
-        <a class="card" href="#" style="--i:3">
-          <span class="card__frame"><img src="images/work-4.png" alt="My Campus Transportation app"></span>
+        <a class="card" href="#/campus-travel" style="--i:3" aria-label="My Campus Travel: Campus Commute App">
+          <span class="card__frame"><img src="images/work-4.png" alt="My Campus Travel: Campus Commute App"></span>
         </a>
+        </div>
+        <div class="slider__controls">
+          <div class="slider__bar"><span></span></div>
+          <button class="slider__btn" data-prev aria-label="Previous project">&larr;</button>
+          <button class="slider__btn" data-next aria-label="Next project">&rarr;</button>
+        </div>
       </div>
     </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about" aria-label="About">
+      <div class="about__intro">
+        <h2 class="about__title" data-reveal>About Me<img class="about__underline" src="images/about-underline.svg" alt="" width="109" height="2"></h2>
+        <p data-reveal>I&rsquo;m currently pursuing a Master&rsquo;s in <strong>Information Design and Data Visualisation</strong> at <strong>MIT Institute of Design</strong>, MIT-ADT University. My academic background is an unconventional mix of Culinary Arts and Design.</p>
+        <p data-reveal style="transition-delay:.12s">I began my design journey as a <strong>visual designer</strong> and food journalist, working across photography, graphic editing, and visual storytelling. As my career evolved, I pursued a <strong>Diploma in Web Design and Development</strong>, which introduced me to <strong>digital products and UI/UX.</strong></p>
+      </div>
+
+      <div class="beyond" data-reveal role="group" aria-labelledby="beyond-title">
+        <h3 class="beyond__title" id="beyond-title" aria-label="Beyond Design"><span aria-hidden="true">B e y o n d </span><span aria-hidden="true">              D e s i g n</span></h3>
+        <p class="beyond__text beyond__text--1">Growing up, I was often called a <strong>&ldquo;jack of all trades&rdquo;</strong> always curious to try something new.</p>
+        <p class="beyond__text beyond__text--2">From <strong>lawn tennis, shooting, public speaking,</strong> and <strong>volunteering</strong> to <strong>training in Indian classical instruments and dance</strong>, I&rsquo;ve always enjoyed exploring unfamiliar spaces.</p>
+        <p class="beyond__text beyond__text--3">I&rsquo;m also an <strong>avid reader,</strong> with books being my true ethereal love. That curiosity continues to drive me to explore, learn, and discover.</p>
+        <img class="beyond__thread" src="images/about-thread.svg" width="196" height="309" alt="" aria-hidden="true">
+      </div>
+    </section>
+
+    <!-- BLOGS -->
+    <section class="blogs" id="blogs" aria-label="Blogs">
+      <a class="blogs__card" href="https://medium.com/@vaivi.hd/the-alchemy-of-sight-deciphering-the-visual-language-of-information-design-f6a66d8bfbba" target="_blank" rel="noopener" data-reveal>
+        <img src="images/blog-1.png" width="1540" height="442" alt="The Alchemy of Sight: Deciphering the Visual Language of Information Design, on Medium" loading="lazy">
+      </a>
+      <a class="blogs__card" href="https://medium.com/design-bootcamp/the-invisible-part-of-design-c048c9110f5a" target="_blank" rel="noopener" data-reveal style="transition-delay:.12s">
+        <img src="images/blog-2.png" width="1540" height="442" alt="The Invisible Part of Design, on Medium (Design Bootcamp)" loading="lazy">
+      </a>
+    </section>
+
+  </div>
+
+  <!-- ===== CASE STUDY: Sense Shift: An Empathy Kit ===== -->
+  <article class="case" id="case-sense-shift" aria-label="Sense Shift: An Empathy Kit">
+    <h1 class="case__title">Sense Shift: An Empathy Kit</h1>
+    <div class="stack">
+      <img src="images/sense-shift/01.png" width="1440" height="756" alt="Sense Shift: An Empathy Kit, slide 1 of 12" loading="lazy" data-reveal>
+      <img src="images/sense-shift/02.png" width="1440" height="893" alt="Sense Shift: An Empathy Kit, slide 2 of 12" loading="lazy" data-reveal>
+      <img src="images/sense-shift/03.png" width="1440" height="1002" alt="Sense Shift: An Empathy Kit, slide 3 of 12" loading="lazy" data-reveal>
+      <img src="images/sense-shift/04.png" width="1440" height="723" alt="Sense Shift: An Empathy Kit, slide 4 of 12" loading="lazy" data-reveal>
+      <img src="images/sense-shift/05.png" width="1440" height="1150" alt="Sense Shift: An Empathy Kit, slide 5 of 12" loading="lazy" data-reveal>
+      <img src="images/sense-shift/06.png" width="1440" height="728" alt="Sense Shift: An Empathy Kit, slide 6 of 12" loading="lazy" data-reveal>
+      <img src="images/sense-shift/07.png" width="1440" height="591" alt="Sense Shift: An Empathy Kit, slide 7 of 12" loading="lazy" data-reveal>
+      <img src="images/sense-shift/08.png" width="1440" height="231" alt="Sense Shift: An Empathy Kit, slide 8 of 12" loading="lazy" data-reveal>
+      <img src="images/sense-shift/09.png" width="1440" height="859" alt="Sense Shift: An Empathy Kit, slide 9 of 12" loading="lazy" data-reveal>
+      <img src="images/sense-shift/10.png" width="1440" height="1024" alt="Sense Shift: An Empathy Kit, slide 10 of 12" loading="lazy" data-reveal>
+      <img src="images/sense-shift/11.png" width="1440" height="1077" alt="Sense Shift: An Empathy Kit, slide 11 of 12" loading="lazy" data-reveal>
+      <img src="images/sense-shift/12.png" width="1440" height="128" alt="Sense Shift: An Empathy Kit, slide 12 of 12" loading="lazy" data-reveal>
+    </div>
+    <div class="case__footer">
+      <a class="case__link" href="#work">&larr; Back to work</a>
+      <a class="case__link" href="#/iitd">Next: IIT-D Internship: Media Tech Lab &rarr;</a>
+    </div>
+  </article>
+  <!-- ===== CASE STUDY: IIT-D Internship: Media Tech Lab ===== -->
+  <article class="case" id="case-iitd" aria-label="IIT-D Internship: Media Tech Lab">
+    <h1 class="case__title">IIT-D Internship: Media Tech Lab</h1>
+    <div class="stack">
+      <img src="images/iitd/01.png" width="1440" height="810" alt="IIT-D Internship: Media Tech Lab, slide 1 of 19" loading="lazy" data-reveal>
+      <img src="images/iitd/02.png" width="1440" height="810" alt="IIT-D Internship: Media Tech Lab, slide 2 of 19" loading="lazy" data-reveal>
+      <img src="images/iitd/03.png" width="1440" height="810" alt="IIT-D Internship: Media Tech Lab, slide 3 of 19" loading="lazy" data-reveal>
+      <img src="images/iitd/04.png" width="1440" height="810" alt="IIT-D Internship: Media Tech Lab, slide 4 of 19" loading="lazy" data-reveal>
+      <img src="images/iitd/05.png" width="1440" height="810" alt="IIT-D Internship: Media Tech Lab, slide 5 of 19" loading="lazy" data-reveal>
+      <img src="images/iitd/06.png" width="1440" height="810" alt="IIT-D Internship: Media Tech Lab, slide 6 of 19" loading="lazy" data-reveal>
+      <img src="images/iitd/07.png" width="1440" height="810" alt="IIT-D Internship: Media Tech Lab, slide 7 of 19" loading="lazy" data-reveal>
+      <img src="images/iitd/08.png" width="1440" height="810" alt="IIT-D Internship: Media Tech Lab, slide 8 of 19" loading="lazy" data-reveal>
+      <img src="images/iitd/09.png" width="1440" height="810" alt="IIT-D Internship: Media Tech Lab, slide 9 of 19" loading="lazy" data-reveal>
+      <img src="images/iitd/10.png" width="1440" height="810" alt="IIT-D Internship: Media Tech Lab, slide 10 of 19" loading="lazy" data-reveal>
+      <img src="images/iitd/11.png" width="1440" height="810" alt="IIT-D Internship: Media Tech Lab, slide 11 of 19" loading="lazy" data-reveal>
+      <img src="images/iitd/12.png" width="1440" height="810" alt="IIT-D Internship: Media Tech Lab, slide 12 of 19" loading="lazy" data-reveal>
+      <img src="images/iitd/13.png" width="1440" height="810" alt="IIT-D Internship: Media Tech Lab, slide 13 of 19" loading="lazy" data-reveal>
+      <img src="images/iitd/14.png" width="1440" height="810" alt="IIT-D Internship: Media Tech Lab, slide 14 of 19" loading="lazy" data-reveal>
+      <img src="images/iitd/15.png" width="1440" height="810" alt="IIT-D Internship: Media Tech Lab, slide 15 of 19" loading="lazy" data-reveal>
+      <img src="images/iitd/16.png" width="1440" height="810" alt="IIT-D Internship: Media Tech Lab, slide 16 of 19" loading="lazy" data-reveal>
+      <img src="images/iitd/17.png" width="1440" height="810" alt="IIT-D Internship: Media Tech Lab, slide 17 of 19" loading="lazy" data-reveal>
+      <img src="images/iitd/18.png" width="1440" height="810" alt="IIT-D Internship: Media Tech Lab, slide 18 of 19" loading="lazy" data-reveal>
+      <img src="images/iitd/19.png" width="1440" height="810" alt="IIT-D Internship: Media Tech Lab, slide 19 of 19" loading="lazy" data-reveal>
+    </div>
+    <div class="case__footer">
+      <a class="case__link" href="#work">&larr; Back to work</a>
+      <a class="case__link" href="#/nma">Next: Re-design NMA Web Landing page &rarr;</a>
+    </div>
+  </article>
+  <!-- ===== CASE STUDY: Re-design NMA Web Landing page ===== -->
+  <article class="case" id="case-nma" aria-label="Re-design NMA Web Landing page">
+    <h1 class="case__title">Re-design NMA Web Landing page</h1>
+    <div class="stack">
+      <img src="images/nma/01.png" width="1440" height="810" alt="Re-design NMA Web Landing page, slide 1 of 5" loading="lazy" data-reveal>
+      <img src="images/nma/02.png" width="1440" height="810" alt="Re-design NMA Web Landing page, slide 2 of 5" loading="lazy" data-reveal>
+      <img src="images/nma/03.png" width="1440" height="810" alt="Re-design NMA Web Landing page, slide 3 of 5" loading="lazy" data-reveal>
+      <img src="images/nma/04.png" width="1440" height="810" alt="Re-design NMA Web Landing page, slide 4 of 5" loading="lazy" data-reveal>
+      <img src="images/nma/05.png" width="1440" height="598" alt="Re-design NMA Web Landing page, slide 5 of 5" loading="lazy" data-reveal>
+    </div>
+    <div class="case__footer">
+      <a class="case__link" href="#work">&larr; Back to work</a>
+      <a class="case__link" href="#/campus-travel">Next: My Campus Travel: Campus Commute App &rarr;</a>
+    </div>
+  </article>
+  <!-- ===== CASE STUDY: My Campus Travel: Campus Commute App ===== -->
+  <article class="case" id="case-campus-travel" aria-label="My Campus Travel: Campus Commute App">
+    <h1 class="case__title">My Campus Travel: Campus Commute App</h1>
+    <div class="stack">
+      <img src="images/campus-travel/01.png" width="1440" height="810" alt="My Campus Travel: Campus Commute App, slide 1 of 26" loading="lazy" data-reveal>
+      <img src="images/campus-travel/02.png" width="1440" height="847" alt="My Campus Travel: Campus Commute App, slide 2 of 26" loading="lazy" data-reveal>
+      <img src="images/campus-travel/03.png" width="1440" height="907" alt="My Campus Travel: Campus Commute App, slide 3 of 26" loading="lazy" data-reveal>
+      <img src="images/campus-travel/04.png" width="1440" height="956" alt="My Campus Travel: Campus Commute App, slide 4 of 26" loading="lazy" data-reveal>
+      <img src="images/campus-travel/05.png" width="1440" height="1044" alt="My Campus Travel: Campus Commute App, slide 5 of 26" loading="lazy" data-reveal>
+      <img src="images/campus-travel/06.png" width="1440" height="810" alt="My Campus Travel: Campus Commute App, slide 6 of 26" loading="lazy" data-reveal>
+      <img src="images/campus-travel/07.png" width="1440" height="810" alt="My Campus Travel: Campus Commute App, slide 7 of 26" loading="lazy" data-reveal>
+      <img src="images/campus-travel/08.png" width="1440" height="810" alt="My Campus Travel: Campus Commute App, slide 8 of 26" loading="lazy" data-reveal>
+      <img src="images/campus-travel/09.png" width="1440" height="633" alt="My Campus Travel: Campus Commute App, slide 9 of 26" loading="lazy" data-reveal>
+      <img src="images/campus-travel/10.png" width="1440" height="933" alt="My Campus Travel: Campus Commute App, slide 10 of 26" loading="lazy" data-reveal>
+      <img src="images/campus-travel/11.png" width="1440" height="990" alt="My Campus Travel: Campus Commute App, slide 11 of 26" loading="lazy" data-reveal>
+      <img src="images/campus-travel/12.png" width="1440" height="1639" alt="My Campus Travel: Campus Commute App, slide 12 of 26" loading="lazy" data-reveal>
+      <img src="images/campus-travel/13.png" width="1440" height="861" alt="My Campus Travel: Campus Commute App, slide 13 of 26" loading="lazy" data-reveal>
+      <img src="images/campus-travel/14.png" width="1440" height="810" alt="My Campus Travel: Campus Commute App, slide 14 of 26" loading="lazy" data-reveal>
+      <img src="images/campus-travel/15.png" width="1440" height="1679" alt="My Campus Travel: Campus Commute App, slide 15 of 26" loading="lazy" data-reveal>
+      <img src="images/campus-travel/16.png" width="1440" height="1460" alt="My Campus Travel: Campus Commute App, slide 16 of 26" loading="lazy" data-reveal>
+      <img src="images/campus-travel/17.png" width="1440" height="3470" alt="My Campus Travel: Campus Commute App, slide 17 of 26" loading="lazy" data-reveal>
+      <img src="images/campus-travel/18.png" width="1440" height="1010" alt="My Campus Travel: Campus Commute App, slide 18 of 26" loading="lazy" data-reveal>
+      <img src="images/campus-travel/19.png" width="1440" height="497" alt="My Campus Travel: Campus Commute App, slide 19 of 26" loading="lazy" data-reveal>
+      <img src="images/campus-travel/20.png" width="1440" height="2043" alt="My Campus Travel: Campus Commute App, slide 20 of 26" loading="lazy" data-reveal>
+      <img src="images/campus-travel/21.png" width="1440" height="2132" alt="My Campus Travel: Campus Commute App, slide 21 of 26" loading="lazy" data-reveal>
+      <img src="images/campus-travel/22.png" width="1440" height="2779" alt="My Campus Travel: Campus Commute App, slide 22 of 26" loading="lazy" data-reveal>
+      <img src="images/campus-travel/23.png" width="1440" height="2510" alt="My Campus Travel: Campus Commute App, slide 23 of 26" loading="lazy" data-reveal>
+      <img src="images/campus-travel/24.png" width="1440" height="2004" alt="My Campus Travel: Campus Commute App, slide 24 of 26" loading="lazy" data-reveal>
+      <img src="images/campus-travel/25.png" width="1440" height="931" alt="My Campus Travel: Campus Commute App, slide 25 of 26" loading="lazy" data-reveal>
+      <img src="images/campus-travel/26.png" width="1440" height="810" alt="My Campus Travel: Campus Commute App, slide 26 of 26" loading="lazy" data-reveal>
+    </div>
+    <div class="case__footer">
+      <a class="case__link" href="#work">&larr; Back to work</a>
+      <a class="case__link" href="#/sense-shift">Next: Sense Shift: An Empathy Kit &rarr;</a>
+    </div>
+  </article>
   </main>
 
-  <script src="script.js"></script>
+  <div class="cursor" aria-hidden="true"><div class="cursor__flower"></div></div>
+  <div class="progress" aria-hidden="true"></div>
+
+  <script src="script.js" defer></script>
 </body>
 </html>
