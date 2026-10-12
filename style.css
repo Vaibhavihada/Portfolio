@@ -2,14 +2,19 @@
 
 :root {
   --nav-bg: #f6de94;
+  --nav-active: #955300;
   --text: #000;
+  --page-bg: #fefefe;
   --font: 'Poppins', Arial, sans-serif;
+  --nav-h: 80px;
 }
+
+html { scroll-behavior: smooth; }
 
 body {
   font-family: var(--font);
   color: var(--text);
-  background: #fff;
+  background: var(--page-bg);
   min-height: 100vh;
 }
 
@@ -17,7 +22,10 @@ a { color: inherit; text-decoration: none; }
 
 /* ---------- Navigation (Figma: 1440 x 80) ---------- */
 .nav {
-  height: 80px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  height: var(--nav-h);
   background: var(--nav-bg);
   box-shadow: 0 0 3.5px rgba(0, 0, 0, 0.25);
   display: flex;
@@ -36,21 +44,22 @@ a { color: inherit; text-decoration: none; }
 }
 .nav__logo img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-.nav__links {
-  display: contents;
-}
+.nav__links { display: contents; }
 .nav__links a {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 80px;
+  height: var(--nav-h);
   padding: 10px;
   font-size: 16px;
   font-weight: 400;
   white-space: nowrap;
   cursor: pointer;
+  transition: color .3s ease;
 }
 .nav__links a:hover { text-decoration: underline; }
+/* Active state from the Work frame: ExtraBold, #955300 */
+.nav__links a.is-active { font-weight: 800; color: var(--nav-active); }
 
 /* ---------- Hero ---------- */
 .hero {
@@ -93,23 +102,16 @@ a { color: inherit; text-decoration: none; }
   max-width: none;
 }
 
+.hero__avatar {
+  position: relative;
+  width: 240px;
+  height: 240px;
+  flex-shrink: 0;
+  margin-left: auto;
+}
 .hero__avatar img { width: 100%; height: 100%; display: block; }
-}
-.hero__ring,
-.hero__portrait {
-  position: absolute;
-  display: block;
-}
-.hero__ring { inset: 0; width: 100%; height: 100%; }
-.hero__portrait {
-  left: 24.7px;
-  top: 15.2px;
-  width: 191px;
-  height: 226px;
-  object-fit: cover;
-}
 
-/* ---------- Tagline + arrow ---------- */
+/* ---------- Tagline + scroll arrow ---------- */
 .tagline {
   max-width: 705px;
   margin: 56px auto 0;
@@ -120,17 +122,101 @@ a { color: inherit; text-decoration: none; }
 }
 
 .scroll-arrow {
+  position: relative;
+  z-index: 2;
   display: block;
   width: 43px;
   height: 51.5px;
   margin: 150px auto 40px;
+  will-change: transform, opacity;
 }
-.scroll-arrow img { width: 100%; height: 100%; display: block; }
+.scroll-arrow img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  animation: arrow-bob 1.6s ease-in-out infinite;
+}
+
+/* Idle: gentle bob that invites a scroll */
+@keyframes arrow-bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(9px); }
+}
+
+/* Landing: squash on touchdown, then fade into the Work section */
+.scroll-arrow.is-landed img {
+  animation: arrow-land .55s cubic-bezier(.2, .8, .3, 1) forwards;
+  transform-origin: 50% 100%;
+}
+.scroll-arrow.is-landed {
+  opacity: 0;
+  transition: opacity .5s ease .35s;
+}
+@keyframes arrow-land {
+  0%   { transform: translateY(0) scale(1, 1); }
+  40%  { transform: translateY(6px) scale(1.12, .72); }
+  70%  { transform: translateY(-3px) scale(.96, 1.06); }
+  100% { transform: translateY(0) scale(1, 1); }
+}
+
+/* ---------- Work (Figma: 3-column grid, 85px / 60px gaps) ---------- */
+.work {
+  scroll-margin-top: var(--nav-h);
+  padding: 86px 0 120px;
+}
+
+.work__grid {
+  width: min(1261px, calc(100% - 160px));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 60px 85px;
+}
+
+.card { display: block; aspect-ratio: 364 / 287; }
+
+.card__frame {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  overflow: visible;
+  box-shadow: 0 0 13px 8px rgba(87, 87, 87, 0.07);
+  transition: transform .35s ease, box-shadow .35s ease;
+}
+.card__frame img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  border-radius: 4px;
+}
+.card:hover .card__frame,
+.card:focus-visible .card__frame {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 22px 8px rgba(87, 87, 87, 0.13);
+}
+.card:focus-visible { outline: 2px solid var(--nav-active); outline-offset: 6px; border-radius: 4px; }
+
+/* Cards rise in one after another (only when JavaScript is running) */
+.js .card {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .7s ease, transform .7s cubic-bezier(.2, .8, .3, 1);
+  transition-delay: calc(var(--i) * 110ms);
+}
+.js .card.is-in { opacity: 1; transform: none; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 1100px) {
   .nav { gap: 24px; padding: 0 24px; }
   .nav__links { display: flex; gap: 8px; margin-left: auto; }
+
+  .work__grid {
+    width: calc(100% - 48px);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 40px 32px;
+  }
 }
 
 @media (max-width: 760px) {
@@ -151,4 +237,19 @@ a { color: inherit; text-decoration: none; }
 
   .tagline { margin-top: 40px; }
   .scroll-arrow { margin-top: 64px; }
+
+  .work { padding-top: 72px; }
+  .work__grid {
+    width: calc(100% - 40px);
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+/* Respect "reduce motion" settings: no bobbing, flying or rising */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .scroll-arrow img { animation: none; }
+  .scroll-arrow.is-landed img { animation: none; }
+  .js .card { opacity: 1; transform: none; transition: none; }
 }
