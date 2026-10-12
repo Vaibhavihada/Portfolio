@@ -93,12 +93,7 @@ a { color: inherit; text-decoration: none; }
   max-width: none;
 }
 
-.hero__avatar {
-  position: relative;
-  width: 240px;
-  height: 240px;
-  flex-shrink: 0;
-  margin-left: auto;
+.hero__avatar img { width: 100%; height: 100%; display: block; }
 }
 .hero__ring,
 .hero__portrait {
