@@ -151,6 +151,25 @@ body.is-case #home { display: none; }
   transform-style: preserve-3d;
 }
 .card__frame img { width: 100%; height: 100%; display: block; object-fit: cover; border-radius: 4px; }
+
+/* Hover state from Figma: yellow overlay with project title + tags */
+.card__frame { position: relative; }
+.card__overlay {
+  position: absolute; inset: 0; border-radius: 4px;
+  background: rgba(246, 222, 148, 0.95);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 15px; padding: 0 12% 22px; text-align: center; color: #000;
+  opacity: 0; pointer-events: none;
+  transition: opacity .35s ease;
+}
+.card__title { font-size: 16.37px; font-weight: 500; line-height: normal; }
+.card__tags  { font-size: 11.37px; font-weight: 400; line-height: 1.4; }
+.card__title, .card__tags { transform: translateY(10px); transition: transform .45s cubic-bezier(.2, .8, .3, 1); }
+.card__tags { transition-delay: .06s; }
+.card:hover .card__overlay,
+.card:focus-visible .card__overlay { opacity: 1; }
+.card:hover .card__title, .card:hover .card__tags,
+.card:focus-visible .card__title, .card:focus-visible .card__tags { transform: none; }
 .card:hover .card__frame,
 .card:focus-visible .card__frame {
   transform: translateY(-6px) perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
@@ -187,14 +206,11 @@ body.is-case #home { display: none; }
 .beyond__text--1 { left: 3px;   top: 78px;  width: 318px; }
 .beyond__text--2 { left: 464px; top: 177px; width: 356px; }
 .beyond__text--3 { left: 10px;  top: 301px; width: 431px; }
-.beyond__thread {
-  position: absolute; left: 315px; top: 92px; width: 196px; height: auto;
-  clip-path: inset(0 0 100% 0);
-  transition: clip-path 2.2s cubic-bezier(.5, 0, .2, 1) .2s;
-}
-.beyond.is-in .beyond__thread { clip-path: inset(0 0 0 0); }
-.beyond__thread:hover { animation: sway 1.2s ease-in-out; }
-@keyframes sway { 25% { transform: rotate(-2deg); } 75% { transform: rotate(2deg); } }
+.beyond__thread { position: absolute; left: 315px; top: 92px; width: 196px; height: auto; overflow: visible; cursor: pointer; }
+/* the thread "stitches itself": a mask path draws along the stitch line (JS adds .is-drawing) */
+.js .thread-path { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.beyond__thread.is-drawing .thread-path { animation: thread-draw 3.4s cubic-bezier(.45, 0, .25, 1) forwards; }
+@keyframes thread-draw { to { stroke-dashoffset: 0; } }
 
 /* ================= Blogs ================= */
 .blogs {
@@ -299,7 +315,8 @@ body.is-case #home { display: none; }
   body, .case.is-open { animation: none; }
   .scroll-arrow img, .scroll-arrow.is-landed img { animation: none; }
   .js .card { opacity: 1; transform: none; transition: none; }
+  .card__title, .card__tags { transform: none; transition: none; }
   .js [data-reveal] { opacity: 1; transform: none; transition: none; }
-  .beyond__thread { clip-path: none; transition: none; animation: none; }
-}
+  .js .thread-path { stroke-dashoffset: 0; }
+  .beyond__thread.is-drawing .thread-path { animation: none; }
 }
