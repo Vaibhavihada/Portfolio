@@ -266,6 +266,37 @@
     });
   }
 
+  /* ================= 7. Sunflower thread stitches itself (About) ================= */
+  var thread = document.querySelector('.beyond__thread');
+  if (thread) {
+    var tPath = thread.querySelector('.tm--all');
+    var tImg = thread.querySelector('.thread-img');
+    var drawThread = function () {
+      if (reduce) return;
+      tImg.setAttribute('mask', 'url(#thread-mask)');
+      thread.classList.remove('is-drawing');
+      void thread.getBoundingClientRect();            // restart the animation
+      thread.classList.add('is-drawing');
+    };
+    tPath.addEventListener('animationend', function () {
+      tImg.removeAttribute('mask');                   // finished: show the full artwork
+      thread.classList.remove('is-drawing');
+    });
+    thread.addEventListener('mouseenter', function () {   // hover to watch it stitch again
+      if (!thread.classList.contains('is-drawing')) drawThread();
+    });
+    if (reduce) {
+      tImg.removeAttribute('mask');
+    } else if ('IntersectionObserver' in window) {
+      var tio = new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) { drawThread(); tio.disconnect(); }
+      }, { threshold: 0.5 });
+      tio.observe(thread);
+    } else {
+      tImg.removeAttribute('mask');
+    }
+  }
+
   /* ================= start ================= */
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', function () { measure(); update(); });
