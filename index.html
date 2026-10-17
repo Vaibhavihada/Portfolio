@@ -8,7 +8,7 @@
   <script>document.documentElement.classList.add('js');</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -50,17 +50,50 @@
     <section class="work" id="work" aria-label="Work">
       <div class="slider" data-slider>
         <div class="slider__track" tabindex="0">
-        <a class="card" href="#/sense-shift" style="--i:0" aria-label="Sense Shift: An Empathy Kit">
-          <span class="card__frame"><img src="images/work-1.png" alt="Sense Shift: An Empathy Kit"></span>
+        <a class="card" href="#/sense-shift" style="--i:0" aria-label="Sense Shift: An Empathy Kit. Product Design, Interaction Design, Education">
+          <span class="card__frame">
+            <img src="images/work-1.png" alt="Sense Shift: An Empathy Kit">
+            <span class="card__overlay" aria-hidden="true">
+              <span class="card__title">Sense Shift: An Empathy Kit</span>
+              <span class="card__tags">Product Design, Interaction Design, Education</span>
+            </span>
+          </span>
         </a>
-        <a class="card" href="#/iitd" style="--i:1" aria-label="IIT-D Internship: Media Tech Lab">
-          <span class="card__frame"><img src="images/work-2.png" alt="IIT-D Internship: Media Tech Lab"></span>
+        <a class="card" href="#/iitd" style="--i:1" aria-label="IIT-D Internship: Media Tech Lab. Research Design, Prototyping, UX, Product Design">
+          <span class="card__frame">
+            <img src="images/work-2.png" alt="IIT-D Internship: Media Tech Lab">
+            <span class="card__overlay" aria-hidden="true">
+              <span class="card__title">IIT-D Internship: Media Tech Lab</span>
+              <span class="card__tags">Research Design, Prototyping, UX, Product Design</span>
+            </span>
+          </span>
         </a>
-        <a class="card" href="#/nma" style="--i:2" aria-label="Re-design NMA Web Landing page">
-          <span class="card__frame"><img src="images/work-3.png" alt="Re-design NMA Web Landing page"></span>
+        <a class="card" href="#/nma" style="--i:2" aria-label="Re-Design NMA Web Landing Page. Visual Encoding, UX">
+          <span class="card__frame">
+            <img src="images/work-3.png" alt="Re-Design NMA Web Landing Page">
+            <span class="card__overlay" aria-hidden="true">
+              <span class="card__title">Re-Design NMA Web Landing Page</span>
+              <span class="card__tags">Visual Encoding, UX</span>
+            </span>
+          </span>
         </a>
-        <a class="card" href="#/campus-travel" style="--i:3" aria-label="My Campus Travel: Campus Commute App">
-          <span class="card__frame"><img src="images/work-4.png" alt="My Campus Travel: Campus Commute App"></span>
+        <a class="card" href="#/campus-travel" style="--i:3" aria-label="My Campus Transportation. IA, Prototyping, UX">
+          <span class="card__frame">
+            <img src="images/work-4.png" alt="My Campus Transportation">
+            <span class="card__overlay" aria-hidden="true">
+              <span class="card__title">My Campus Transportation</span>
+              <span class="card__tags">IA, Prototyping, UX</span>
+            </span>
+          </span>
+        </a>
+        <a class="card" href="#/data-viz" style="--i:4" aria-label="SDG GOAL 15: Data-Viz Poster. Visual communication, Data visualisation">
+          <span class="card__frame">
+            <img src="images/work-5.png" alt="SDG GOAL 15: Data-Viz Poster">
+            <span class="card__overlay" aria-hidden="true">
+              <span class="card__title">SDG GOAL 15: Data-Viz Poster</span>
+              <span class="card__tags">Visual communication, Data visualisation</span>
+            </span>
+          </span>
         </a>
         </div>
         <div class="slider__controls">
@@ -84,7 +117,16 @@
         <p class="beyond__text beyond__text--1">Growing up, I was often called a <strong>&ldquo;jack of all trades&rdquo;</strong> always curious to try something new.</p>
         <p class="beyond__text beyond__text--2">From <strong>lawn tennis, shooting, public speaking,</strong> and <strong>volunteering</strong> to <strong>training in Indian classical instruments and dance</strong>, I&rsquo;ve always enjoyed exploring unfamiliar spaces.</p>
         <p class="beyond__text beyond__text--3">I&rsquo;m also an <strong>avid reader,</strong> with books being my true ethereal love. That curiosity continues to drive me to explore, learn, and discover.</p>
-        <img class="beyond__thread" src="images/about-thread.svg" width="196" height="309" alt="" aria-hidden="true">
+        <svg class="beyond__thread" viewBox="0 0 196 309" width="196" height="309" aria-hidden="true" focusable="false">
+          <defs>
+            <mask id="thread-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="196" height="309">
+              <circle cx="34" cy="28" r="36" fill="#fff"/>
+              <path class="thread-path" pathLength="1" fill="none" stroke="#fff" stroke-width="56" stroke-linecap="round" stroke-linejoin="round"
+                    d="M35 28 L90 8 Q100 30 122 54 T119 78 T142 91 T107 107 T99 143 T103 190 T127 193 T163 198 T148 232 T143 253 T107 256 T65 263 T44 266 T30 280"/>
+            </mask>
+          </defs>
+          <image class="thread-img" href="images/about-thread.svg" width="196" height="309" mask="url(#thread-mask)"/>
+        </svg>
       </div>
     </section>
 
@@ -145,9 +187,24 @@
     </div>
     <div class="case__footer">
       <a class="case__link" href="#work">&larr; Back to work</a>
+      <a class="case__link" href="#/data-viz">Next: Data Visualisation Poster &rarr;</a>
+    </div>
+  </article>
+
+  <!-- ===== CASE STUDY: Data Visualisation Poster ===== -->
+  <article class="case" id="case-data-viz" aria-label="Data Visualisation Poster">
+    <h1 class="case__title">Data Visualisation Poster</h1>
+    <div class="stack">
+      <img src="images/data-viz-1.png" width="1440" height="2976" alt="Data Visualisation Poster, part 1 of 3">
+      <img src="images/data-viz-2.png" width="1440" height="3000" alt="Data Visualisation Poster, part 2 of 3" loading="lazy">
+      <img src="images/data-viz-3.png" width="1440" height="2983" alt="Data Visualisation Poster, part 3 of 3" loading="lazy">
+    </div>
+    <div class="case__footer">
+      <a class="case__link" href="#work">&larr; Back to work</a>
       <a class="case__link" href="#/sense-shift">Next: Sense Shift: An Empathy Kit &rarr;</a>
     </div>
   </article>
+
   </main>
 
   <div class="cursor" aria-hidden="true"><div class="cursor__flower"></div></div>
