@@ -69,32 +69,38 @@ img { max-width: 100%; }
 body.is-case #home { display: none; }
 @keyframes view-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 
-/* ================= Hero ================= */
+/* ================= Hero (Figma Home 19:9808) ================= */
 .hero {
-  display: flex; align-items: flex-start; justify-content: center; gap: 10px;
-  max-width: 720px; margin: 144px auto 0; padding: 0 20px;
+  display: flex; align-items: flex-start; gap: 10px;
+  width: 702px; max-width: calc(100% - 40px);
+  margin: 160px auto 0;
 }
-.hero__text { width: 452px; flex-shrink: 0; }
+.hero__text { width: 452px; flex-shrink: 0; margin-top: 28px; }
 .hero__text h1 { font-size: 29.876px; font-weight: 600; line-height: normal; }
-.hero__bio { margin-top: 13px; font-size: 19.918px; font-weight: 600; line-height: normal; }
-.hero__bio .regular { font-weight: 400; }
-.hero__role { position: relative; display: block; width: max-content; max-width: 100%; margin-bottom: 30px; }
-/* underline spans exactly the width of the role text, left edges aligned */
+.hero__bio { margin-top: 13px; font-size: 19.918px; font-weight: 400; line-height: normal; }
+.hero__role { position: relative; display: inline-block; font-weight: 600; }
+/* the underline spans exactly the width of the role text and draws itself in */
 .hero__underline {
-  position: absolute; left: 0; bottom: -10px; width: 100%; height: auto; max-width: none;
+  position: absolute; left: 0; bottom: -6px; width: 100%; height: 6px; overflow: visible;
+  transform-origin: left center;
+  animation: underline-draw .9s cubic-bezier(.4, 0, .2, 1) .5s both;
 }
-.hero__avatar { position: relative; width: 240px; height: 240px; flex-shrink: 0; margin-left: auto; }
+.hero__underline path { fill: none; stroke: var(--olive); stroke-width: 2.6; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+@keyframes underline-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.hero__avatar { position: relative; width: 240px; height: 240px; flex-shrink: 0; }
 .hero__avatar img { width: 100%; height: 100%; display: block; transition: transform .5s cubic-bezier(.2, .8, .3, 1.4); }
 .hero__avatar:hover img { transform: rotate(-6deg) scale(1.06); }
 
+/* tagline sits left-aligned with the hero text, as in Figma */
 .tagline {
-  max-width: 705px; margin: 56px auto 0; padding: 10px;
-  text-align: center; font-size: 16.344px; font-weight: 400;
+  width: 702px; max-width: calc(100% - 40px);
+  margin: 17px auto 0; padding: 10px 0;
+  text-align: left; font-size: 16.344px; font-weight: 400;
 }
 
 .scroll-arrow {
   position: relative; z-index: 2; display: block;
-  width: 43px; height: 51.5px; margin: 150px auto 40px;
+  width: 43px; height: 51.5px; margin: 148px auto 40px;
   will-change: transform, opacity;
 }
 .scroll-arrow img { width: 100%; height: 100%; display: block; animation: arrow-bob 1.6s ease-in-out infinite; }
@@ -207,10 +213,23 @@ body.is-case #home { display: none; }
 .beyond__text--2 { left: 464px; top: 177px; width: 356px; }
 .beyond__text--3 { left: 10px;  top: 301px; width: 431px; }
 .beyond__thread { position: absolute; left: 315px; top: 92px; width: 196px; height: auto; overflow: visible; cursor: pointer; }
-/* the thread "stitches itself": a mask path draws along the stitch line (JS adds .is-drawing) */
-.js .thread-path { stroke-dasharray: 1; stroke-dashoffset: 1; }
-.beyond__thread.is-drawing .thread-path { animation: thread-draw 3.4s cubic-bezier(.45, 0, .25, 1) forwards; }
-@keyframes thread-draw { to { stroke-dashoffset: 0; } }
+/* the thread "stitches itself": its 7 real segments are revealed one after another (JS adds .is-drawing) */
+.tm { fill: #fff; transform-box: fill-box; }
+.tm--wipe { transform-origin: 50% 0; }
+.tm--left { transform-origin: 100% 50%; }
+.js .tm--wipe { transform: scaleY(0); }
+.js .tm--left { transform: scaleX(0); }
+.js .tm--fade { opacity: 0; }
+.beyond__thread.is-drawing .tm {
+  animation-duration: var(--d); animation-delay: var(--t);
+  animation-fill-mode: forwards; animation-timing-function: cubic-bezier(.4, 0, .3, 1);
+}
+.beyond__thread.is-drawing .tm--wipe { animation-name: tm-wipe-y; }
+.beyond__thread.is-drawing .tm--left { animation-name: tm-wipe-x; }
+.beyond__thread.is-drawing .tm--fade { animation-name: tm-fade; }
+@keyframes tm-wipe-y { to { transform: scaleY(1); } }
+@keyframes tm-wipe-x { to { transform: scaleX(1); } }
+@keyframes tm-fade   { to { opacity: 1; } }
 
 /* ================= Blogs ================= */
 .blogs {
@@ -296,9 +315,7 @@ body.is-case #home { display: none; }
   .nav__links a::after { bottom: 6px; }
 
   .hero { flex-direction: column-reverse; align-items: center; margin-top: 48px; gap: 32px; }
-  .hero__text { width: 100%; }
-  .hero__avatar { margin-left: 0; }
-  .hero__role { margin-bottom: 20px; }
+  .hero__text { width: 100%; margin-top: 0; }
 
   .tagline { margin-top: 40px; }
   .scroll-arrow { margin-top: 64px; }
@@ -317,6 +334,8 @@ body.is-case #home { display: none; }
   .js .card { opacity: 1; transform: none; transition: none; }
   .card__title, .card__tags { transform: none; transition: none; }
   .js [data-reveal] { opacity: 1; transform: none; transition: none; }
-  .js .thread-path { stroke-dashoffset: 0; }
-  .beyond__thread.is-drawing .thread-path { animation: none; }
+  .js .tm--wipe, .js .tm--left { transform: none; }
+  .js .tm--fade { opacity: 1; }
+  .beyond__thread.is-drawing .tm { animation: none; }
+  .hero__underline { animation: none; }
 }
